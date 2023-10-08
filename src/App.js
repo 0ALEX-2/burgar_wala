@@ -2,6 +2,9 @@ import Header from "./components/home/layout/Header";
 import { Routes, Route } from "react-router-dom";
 import "./styles/app.scss";
 import "./styles/header.scss";
+import "./styles/home.scss";
+import "./styles/founder.scss";
+import "./styles/menu.scss";
 import Home from "./components/home/Home";
 
 function App() {
