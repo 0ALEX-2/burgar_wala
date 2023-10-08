@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Founder from "./Founder";
+import Menu from "./Menu";
 
 const Home = () => {
   const animate = {
@@ -34,6 +35,7 @@ const Home = () => {
         </motion.a>
       </section>
       <Founder />
+      <Menu />
     </>
   );
 };
