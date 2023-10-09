@@ -44,4 +44,22 @@
             }
         }
     }
+    .formBorder{
+        width: 200px;
+        height: 80%;
+        background-color: white;
+        border-radius: 0 200px 200px 0;
+        position: relative;
+        >div{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            transform: translate(50%,-50%);
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.566));
+            >img{
+                width: 100%;
+            }
+        }
+    }
 }
