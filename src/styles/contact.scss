@@ -63,3 +63,16 @@
         }
     }
 }
+
+@media screen and (max-width:600px){
+    .contact{
+        height: 70vh;
+        >form{
+            width: 100%;
+            height: 100%;
+        }
+        .formBorder{
+            display: none;
+        }
+    }
+}
