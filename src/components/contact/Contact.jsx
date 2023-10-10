@@ -31,7 +31,7 @@ const Contact = () => {
         <motion.div
           initial={{ y: "-100vh", x: "50%", opacity: 0 }}
           animate={{ y: "-50%", x: "50%", opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.6 }}
         >
           <img src={burger} alt="Burger" />
         </motion.div>
