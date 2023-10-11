@@ -1,7 +1,9 @@
 import React from "react";
+import burger from "../../assets/burger1.webp";
 
 const CartItem = ({ value, title, img, inc, dec }) => {
   <div className="cartItem">
+    {console.log(title, "title")}
     <div>
       <h4>{title}</h4>
       <img src={img} alt="Item" />
@@ -16,10 +18,32 @@ const CartItem = ({ value, title, img, inc, dec }) => {
 };
 
 const Cart = () => {
+  const increment = (item) => {};
+  const decrement = (item) => {};
   return (
     <section className="cart">
       <main>
-        <CartItem />
+        <CartItem
+          title="Cheese Burger"
+          img={burger}
+          value={0}
+          inc={() => increment(1)}
+          dec={() => decrement(1)}
+        />
+        {/* <CartItem
+          title={"Veg Cheese Burger"}
+          img={burger}
+          value={0}
+          inc={() => increment(2)}
+          dec={() => decrement(2)}
+        />
+        <CartItem
+          title={"Cheese Burger with French Fries"}
+          img={burger}
+          value={0}
+          inc={() => increment(3)}
+          dec={() => decrement(3)}
+        /> */}
       </main>
     </section>
   );
