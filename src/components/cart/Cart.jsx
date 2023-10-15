@@ -1,21 +1,7 @@
 import React from "react";
 import burger from "../../assets/burger1.webp";
-
-const CartItem = ({ value, title, img, inc, dec }) => {
-  <div className="cartItem">
-    {console.log(title, "title")}
-    <div>
-      <h4>{title}</h4>
-      <img src={img} alt="Item" />
-    </div>
-    <div>
-      <button onClick={dec}>-</button>
-      <input type="number" value={value} readOnly />
-      <button onClick={inc}>+</button>
-      {/* 1.46 */}
-    </div>
-  </div>;
-};
+import CartItem from "./CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const increment = (item) => {};
@@ -30,7 +16,7 @@ const Cart = () => {
           inc={() => increment(1)}
           dec={() => decrement(1)}
         />
-        {/* <CartItem
+        <CartItem
           title={"Veg Cheese Burger"}
           img={burger}
           value={0}
@@ -43,7 +29,26 @@ const Cart = () => {
           value={0}
           inc={() => increment(3)}
           dec={() => decrement(3)}
-        /> */}
+        />
+        <article>
+          <div>
+            <h4>Sub Total</h4>
+            <p>₹{2000}</p>
+          </div>
+          <div>
+            <h4>Tax</h4>
+            <p>₹{2000 * 0.18}</p>
+          </div>
+          <div>
+            <h4>Shipping Charges</h4>
+            <p>₹{100}</p>
+          </div>
+          <div>
+            <h4>Total</h4>
+            <p>₹{2000 + 2000 * 0.18 + 100}</p>
+          </div>
+          <Link to="/shipping">Checkout</Link>
+        </article>
       </main>
     </section>
   );
