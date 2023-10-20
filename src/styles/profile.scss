@@ -1,1 +1,58 @@
-@import "colors";
+@import "colors";   
+
+.profile{
+    height: 100vh;
+    width: 100%;
+    background-color: $pink;
+
+    >main{
+        height: 100%;
+        background-color: white;
+        margin: auto;
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        max-width: 900px;
+
+        >img{
+            height: 15rem;
+            border-radius: 100%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.146);
+            width: 15rem;
+            margin: 4rem;
+        }
+        >h5{
+            font-size: 2rem;
+        }
+        >div{
+            margin: 2rem;
+            >a{
+                background-color: $red;
+                border-radius: 5px;
+                font-size: 1rem;
+                padding: 0.7rem 1.5rem;
+                color: white;
+                display: flex;
+                align-items: center;
+                &:hover{
+                    background-color: $reddark;
+                }
+            }
+        }
+        >button{
+            border: none;
+            outline: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(245,245,245,0.846);
+            }
+        }
+    }
+   
+}
