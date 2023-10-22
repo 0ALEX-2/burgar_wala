@@ -31,6 +31,7 @@ import MyOrders from "./components/MyOrders/MyOrders";
 import OrderDetails from "./components/MyOrders/OrderDetails";
 import Dashboard from "./components/admin/Dashboard";
 import Users from "./components/admin/Users";
+import Orders from "./components/admin/Orders";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route path="/order/:id" element={<OrderDetails />} />
         <Route path="/admin/dashboard" element={<Dashboard />} />
         <Route path="/admin/users" element={<Users />} />
+        <Route path="/admin/orders" element={<Orders />} />
       </Routes>
       <Footer />
     </div>
