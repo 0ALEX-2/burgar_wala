@@ -14,7 +14,6 @@ dotenv.config({
 });
 
 //Midlewares
-app.use(cookieParser);
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -22,6 +21,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(cookieParser());
+
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
