@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.schema({
+const schema = new mongoose.Schema({
   shippingInfo: {
     houseNo: {
       type: String,
@@ -31,33 +31,33 @@ const schema = new mongoose.schema({
     cheeseBurger: {
       price: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
       quantity: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
     },
 
     vegCheeseBurger: {
       price: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
       quantity: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
     },
 
     burgerWithFries: {
       price: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
       quantity: {
         type: Number,
-        requiredtrue,
+        required: true,
       },
     },
   },
