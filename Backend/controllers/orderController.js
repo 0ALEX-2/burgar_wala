@@ -1,5 +1,5 @@
 import { asyncError } from "../middlewares/errorMiddleware";
-import { OrderModel } from "../models/OrderModel";
+import { OrderModel } from "../models/OrderModel.js";
 
 export const orderController = asyncError(async (req, res, next) => {
   const {
