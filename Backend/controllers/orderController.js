@@ -1,107 +1,34 @@
-import mongoose from "mongoose";
+import { asyncError } from "../middlewares/errorMiddleware";
+import { OrderModel } from "../models/OrderModel";
 
-const schema = new mongoose.schema({
-  shippingInfo: {
-    houseNo: {
-      type: String,
-      required: true,
-    },
-    city: {
-      type: String,
-      required: true,
-    },
-    state: {
-      type: String,
-      required: true,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-    pinCode: {
-      type: Number,
-      required: true,
-    },
-    phoneNo: {
-      type: Number,
-      required: true,
-    },
-  },
-  orderItems: {
-    cheeseBurger: {
-      price: {
-        type: Number,
-        requiredtrue,
-      },
-      quantity: {
-        type: Number,
-        requiredtrue,
-      },
-    },
+export const orderController = asyncError(async (req, res, next) => {
+  const {
+    shippingInfo,
+    orderItems,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingCharges,
+    totalAmount,
+  } = req.body;
 
-    vegCheeseBurger: {
-      price: {
-        type: Number,
-        requiredtrue,
-      },
-      quantity: {
-        type: Number,
-        requiredtrue,
-      },
-    },
+  const user = req.user._id;
 
-    burgerWithFries: {
-      price: {
-        type: Number,
-        requiredtrue,
-      },
-      quantity: {
-        type: Number,
-        requiredtrue,
-      },
-    },
-  },
-  user: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  paymentMethod: {
-    type: "String",
-    enum: ["COD", "Online"],
-    default: "COD",
-  },
-  paymentInfo: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Payment",
-  },
-  paidAt: Date,
-  itemsPrice: {
-    type: Number,
-    default: 0,
-  },
-  taxPrice: {
-    type: Number,
-    default: 0,
-  },
-  shippingCharges: {
-    type: Number,
-    default: 0,
-  },
-  totalAmount: {
-    type: Number,
-    default: 0,
-  },
-  orderStatus: {
-    type: String,
-    enum: ["Preparing", "Shipped", "Delivered"],
-    default: "Preparing",
-  },
-  deliveredAt: Date,
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  const orderOptions = {
+    shippingInfo,
+    orderItems,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingCharges,
+    totalAmount,
+    user,
+  };
+
+  await OrderModel.create(orderOptions);
+
+  res.status(201).json({
+    success: true,
+    message: "Order placed successfully via COD",
+  });
 });
-
-export const OrderModel = mongoose.model("Order", schema);
