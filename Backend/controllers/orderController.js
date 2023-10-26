@@ -34,6 +34,40 @@ export const orderController = asyncError(async (req, res, next) => {
   });
 });
 
+export const onlineOrderController = asyncError(async (req, res, next) => {
+  const {
+    shippingInfo,
+    orderItems,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingCharges,
+    totalAmount,
+  } = req.body;
+
+  const user = req.user._id;
+
+  const orderOptions = {
+    shippingInfo,
+    orderItems,
+    paymentMethod,
+    itemsPrice,
+    taxPrice,
+    shippingCharges,
+    totalAmount,
+    user,
+  };
+
+  // 1 hr 42 min
+
+  await OrderModel.create(orderOptions);
+
+  res.status(201).json({
+    success: true,
+    message: "Order placed successfully via COD",
+  });
+});
+
 export const getMyOrders = asyncError(async (req, res, next) => {
   const orders = await OrderModel.find({
     user: req.user._id,

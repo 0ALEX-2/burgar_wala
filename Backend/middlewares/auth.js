@@ -8,4 +8,11 @@ export const isAuthenticated = (req, res, next) => {
   }
   next();
 };
+
+export const authorizeAdmin = (req, res, next) => {
+  if (req.user.role !== "admin") {
+    return next(new ErrorHandler("Only admin allowed", 405));
+  }
+  next();
+};
  
