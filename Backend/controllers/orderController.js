@@ -56,3 +56,30 @@ export const getOrderDetails = asyncError(async (req, res, next) => {
     order,
   });
 });
+
+export const getAdminOrders = asyncError(async (req, res, next) => {
+  const orders = await OrderModel.find({}).populate("user", "name");
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+export const processOrder = asyncError(async (req, res, next) => {
+  const order = await OrderModel.findById(req.params.id);
+  if (!order) return next(new ErrorHandler("Invalid order Id", 404));
+  if (order.orderStatus === "Preparing") order.orderStatus === "Shipped";
+  else if (order.orderStatus === "Shipped") {
+    order.orderStatus === "Delivered";
+    order.deliveredAt === new Date(Date.now());
+  } else if (order.orderStatus === "Delivered") {
+    return next(new ErrorHandler("Food already delivered", 400));
+    await order.save();
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "Status updated successfully",
+  });
+});
+
