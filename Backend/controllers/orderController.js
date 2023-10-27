@@ -1,6 +1,7 @@
 import { asyncError } from "../middlewares/errorMiddleware.js";
 import { OrderModel } from "../models/OrderModel.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
+import { instance } from "../server.js";
 
 export const orderController = asyncError(async (req, res, next) => {
   const {
@@ -58,13 +59,17 @@ export const onlineOrderController = asyncError(async (req, res, next) => {
     user,
   };
 
-  // 1 hr 42 min
-
-  await OrderModel.create(orderOptions);
+  let options = {
+    amount: Number(totalAmount) * 100,
+    currency: "INR",
+  };
+  const order = await instance.orders.create(options);
+  await OrderModel.create();
 
   res.status(201).json({
     success: true,
-    message: "Order placed successfully via COD",
+    order,
+    orderOptions,
   });
 });
 
