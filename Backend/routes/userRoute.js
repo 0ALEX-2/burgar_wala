@@ -32,5 +32,6 @@ router.get("/me", isAuthenticated, myProfile);
 router.get("/logout", logout);
 
 router.get("/admin/users", isAuthenticated, authorizeAdmin, getAdminUsers);
+router.get("/admin/users", isAuthenticated, authorizeAdmin, getAdminUsers);
 
 export default router;
