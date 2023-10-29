@@ -6,13 +6,15 @@ import {
   getOrderDetails,
   onlineOrderController,
   orderController,
+  paymentVerification,
   processOrder,
 } from "../controllers/orderController.js";
 
 const router = express.Router();
 
-router.post("/createorder", orderController);
-router.post("/createorderonline", onlineOrderController);
+router.post("/createorder", isAuthenticated, orderController);
+router.post("/createorderonline", isAuthenticated, onlineOrderController);
+router.post("/paymentverification", isAuthenticated, paymentVerification);
 router.get("/myorders", isAuthenticated, getMyOrders);
 router.get("/order/:id", isAuthenticated, getOrderDetails);
 router.get("/admin/orders", isAuthenticated, authorizeAdmin, getAdminOrders);
